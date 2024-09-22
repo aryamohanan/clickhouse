@@ -116,3 +116,5 @@ To stop and remove the containers and volumes, run:
 docker-compose down
 ```
 
+### Reference
+https://clickhouse.com/docs/en/integrations/javascript

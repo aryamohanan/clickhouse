@@ -8,7 +8,6 @@ const port = 3000;
 
 app.use(express.json());
 
-// Initialize ClickHouse client
 const client = createClient({
   host: 'http://localhost:8123',
   username: 'default',
@@ -16,7 +15,7 @@ const client = createClient({
   database: 'default',
 });
 
-// Endpoint to create a table
+
 app.post('/create-table', async (req, res) => {
   const createTableQuery = `
     CREATE TABLE IF NOT EXISTS my_cloud_table
@@ -43,10 +42,10 @@ app.post('/insert', async (req, res) => {
 
   try {
     await client.insert({
-      table: 'my_cloud_table', // Fully qualified table name
-      values: [[id, message]], // Use nested arrays for values
+      table: 'my_cloud_table', 
+      values: [[id, message]], 
       clickhouse_settings: {
-        wait_end_of_query: 1, // Wait for the query to finish
+        wait_end_of_query: 1, 
       },
     });
     res.send('Data inserted successfully');
@@ -56,7 +55,6 @@ app.post('/insert', async (req, res) => {
   }
 });
 
-// Endpoint to select data
 app.get('/select', async (req, res) => {
   try {
     const resultSet = await client.query({
@@ -71,7 +69,6 @@ app.get('/select', async (req, res) => {
   }
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
