@@ -10,6 +10,7 @@
   "author": "Arya Mohanan",
   "license": "ISC",
   "dependencies": {
+    "@clickhouse/client": "^1.6.0",
     "@instana/collector": "^3.18.2",
     "body-parser": "^1.20.3",
     "clickhouse": "^2.6.0",
